@@ -1,0 +1,4 @@
+sonar_preview:
+  stage: test
+  script:
+    - mvn clean verify sonar:sonar -Dmaven.test.skip=true -Dsonar.login=376000286f6b787cbd37b4630dbcb8952bc656db

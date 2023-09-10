@@ -1,0 +1,7 @@
+/*.iml
+/.gradle/
+/.idea/
+/target/
+/out/
+/logs/
+.flattened-pom.xml

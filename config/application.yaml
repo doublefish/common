@@ -1,0 +1,60 @@
+# 与环境无关的固定配置，在此处配置，与环境相关的跟着每个环境的配置文件走。
+spring:
+  profiles:
+    active: dev
+  application:
+    name: common
+  # 数据源配置
+  datasource:
+    # 连接池监控配置
+    url: jdbc:mysql://10.20.31.115:3306/sup8_product_basic?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ccn-devops
+    password: cyRGzPN8gsEQFW9V
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  elasticsearch:
+    rest:
+      uris: elastic.ccn.local:9200
+      username:
+      password:
+  rabbitmq:
+    host: 10.20.31.151
+    port: 31514
+    username: ccnadmin
+    password: ccn123
+    listener:
+      simple:
+        default-requeue-rejected: false
+        missing-queues-fatal: false
+        acknowledge-mode: manual
+        max-concurrency: 1
+        concurrency: 1
+  redis:
+    database: 0
+    host: 10.20.31.151
+    port: 31617
+    password: ccn123
+    timeout: 0
+    pool:
+      # 最大可用连接数（默认为8，负数表示无限）
+      max-active: 8
+      # 最大空闲连接数（默认为8，负数表示无限）
+      max-idle: 8
+      # 最小空闲连接数（默认为0，该值只有为正数才有用）
+      min-idle: 0
+      # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
+      max-wait: -1
+
+server:
+  port: 2000
+  # 开启优雅关闭
+  shutdown: graceful
+
+
+logging:
+  # config: classpath:config/log4j2.xml
+  level:
+    root: info
+
+mybatis-plus:
+  mapper-locations:
+    classpath: mapper/*.xml
